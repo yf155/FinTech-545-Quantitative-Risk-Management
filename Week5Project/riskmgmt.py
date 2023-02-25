@@ -396,7 +396,7 @@ def get_portfolio_price(portfolio, prices, portfolio_code, Delta=False):
 
 def multivariate_normal_simulation(covariance_matrix, n_samples, method='direct', mean = 0, explained_variance=1.0):
     if method == 'direct':      
-        L = cov_matrix.chol_psd(covariance_matrix)
+        L = chol_psd(covariance_matrix)
         normal_samples = np.random.normal(size=(covariance_matrix.shape[0], n_samples))       
         samples = np.transpose(np.dot(L, normal_samples) + mean)        
         return samples 
